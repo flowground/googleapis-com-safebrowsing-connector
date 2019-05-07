@@ -1,0 +1,180 @@
+{
+    "type": "object",
+    "properties": {
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request to return full hashes matched by the provided hash prefixes.",
+            "properties": {
+                "apiClient": {
+                    "description": "Client metadata associated with callers of higher-level APIs built on top\nof the client's implementation.",
+                    "properties": {
+                        "clientId": {
+                            "description": "A client ID that (hopefully) uniquely identifies the client implementation\nof the Safe Browsing API.",
+                            "type": "string"
+                        },
+                        "clientVersion": {
+                            "description": "The version of the client implementation.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "client": {
+                    "description": "The client metadata.",
+                    "properties": {
+                        "clientId": {
+                            "description": "A client ID that (hopefully) uniquely identifies the client implementation\nof the Safe Browsing API.",
+                            "type": "string"
+                        },
+                        "clientVersion": {
+                            "description": "The version of the client implementation.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "clientStates": {
+                    "description": "The current client states for each of the client's local threat lists.",
+                    "items": {
+                        "format": "byte",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "threatInfo": {
+                    "description": "The lists and hashes to be checked.",
+                    "properties": {
+                        "platformTypes": {
+                            "description": "The platform types to be checked.",
+                            "items": {
+                                "enum": [
+                                    "PLATFORM_TYPE_UNSPECIFIED",
+                                    "WINDOWS",
+                                    "LINUX",
+                                    "ANDROID",
+                                    "OSX",
+                                    "IOS",
+                                    "ANY_PLATFORM",
+                                    "ALL_PLATFORMS",
+                                    "CHROME"
+                                ],
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "threatEntries": {
+                            "description": "The threat entries to be checked.",
+                            "items": {
+                                "description": "An individual threat; for example, a malicious URL or its hash\nrepresentation. Only one of these fields should be set.",
+                                "properties": {
+                                    "digest": {
+                                        "description": "The digest of an executable in SHA256 format. The API supports both\nbinary and hex digests. For JSON requests, digests are base64-encoded.",
+                                        "format": "byte",
+                                        "type": "string"
+                                    },
+                                    "hash": {
+                                        "description": "A hash prefix, consisting of the most significant 4-32 bytes of a SHA256\nhash. This field is in binary format. For JSON requests, hashes are\nbase64-encoded.",
+                                        "format": "byte",
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "description": "A URL.",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "threatEntryTypes": {
+                            "description": "The entry types to be checked.",
+                            "items": {
+                                "enum": [
+                                    "THREAT_ENTRY_TYPE_UNSPECIFIED",
+                                    "URL",
+                                    "EXECUTABLE",
+                                    "IP_RANGE",
+                                    "CHROME_EXTENSION",
+                                    "FILENAME",
+                                    "CERT"
+                                ],
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "threatTypes": {
+                            "description": "The threat types to be checked.",
+                            "items": {
+                                "enum": [
+                                    "THREAT_TYPE_UNSPECIFIED",
+                                    "MALWARE",
+                                    "SOCIAL_ENGINEERING",
+                                    "UNWANTED_SOFTWARE",
+                                    "POTENTIALLY_HARMFUL_APPLICATION",
+                                    "SOCIAL_ENGINEERING_INTERNAL",
+                                    "API_ABUSE",
+                                    "MALICIOUS_BINARY",
+                                    "CSD_WHITELIST",
+                                    "CSD_DOWNLOAD_WHITELIST",
+                                    "CLIENT_INCIDENT",
+                                    "CLIENT_INCIDENT_WHITELIST",
+                                    "APK_MALWARE_OFFLINE",
+                                    "SUBRESOURCE_FILTER",
+                                    "SUSPICIOUS",
+                                    "TRICK_TO_BILL"
+                                ],
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "__xgafv": {
+            "type": "string",
+            "enum": [
+                "1",
+                "2"
+            ]
+        }
+    }
+}

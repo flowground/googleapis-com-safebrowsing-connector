@@ -1,0 +1,153 @@
+{
+    "title": "Safe Browsing",
+    "description": "Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.",
+    "docsUrl": "https://developers.google.com/safe-browsing/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/safebrowsing/v4/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://safebrowsing.googleapis.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "safebrowsing_encodedFullHashes_get": {
+            "main": "./lib/actions/safebrowsing_encodedFullHashes_get.js",
+            "title": "safebrowsing_encodedFullHashes_get",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/safebrowsing_encodedFullHashes_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "safebrowsing_encodedUpdates_get": {
+            "main": "./lib/actions/safebrowsing_encodedUpdates_get.js",
+            "title": "safebrowsing_encodedUpdates_get",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/safebrowsing_encodedUpdates_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "safebrowsing_fullHashes_find": {
+            "main": "./lib/actions/safebrowsing_fullHashes_find.js",
+            "title": "Finds the full hashes that match the requested hash prefixes.",
+            "description": "Finds the full hashes that match the requested hash prefixes.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/safebrowsing_fullHashes_find.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "safebrowsing_threatHits_create": {
+            "main": "./lib/actions/safebrowsing_threatHits_create.js",
+            "title": "Reports a Safe Browsing threat list hit to Google. Only projects with\nTRUSTED_REPORTER visibility can use this method.",
+            "description": "Reports a Safe Browsing threat list hit to Google. Only projects with\nTRUSTED_REPORTER visibility can use this method.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/safebrowsing_threatHits_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "safebrowsing_threatListUpdates_fetch": {
+            "main": "./lib/actions/safebrowsing_threatListUpdates_fetch.js",
+            "title": "Fetches the most recent threat list updates. A client can request updates\nfor multiple lists at once.",
+            "description": "Fetches the most recent threat list updates. A client can request updates\nfor multiple lists at once.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/safebrowsing_threatListUpdates_fetch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "safebrowsing_threatLists_list": {
+            "main": "./lib/actions/safebrowsing_threatLists_list.js",
+            "title": "Lists the Safe Browsing threat lists available for download.",
+            "description": "Lists the Safe Browsing threat lists available for download.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/safebrowsing_threatLists_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "safebrowsing_threatMatches_find": {
+            "main": "./lib/actions/safebrowsing_threatMatches_find.js",
+            "title": "Finds the threat entries that match the Safe Browsing lists.",
+            "description": "Finds the threat entries that match the Safe Browsing lists.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/safebrowsing_threatMatches_find.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

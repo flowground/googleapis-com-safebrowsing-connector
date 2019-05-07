@@ -1,0 +1,174 @@
+{
+    "type": "object",
+    "properties": {
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Describes a Safe Browsing API update request. Clients can request updates for\nmultiple lists in a single request.\nNOTE: Field index 2 is unused.\nNEXT: 5",
+            "properties": {
+                "client": {
+                    "description": "The client metadata.",
+                    "properties": {
+                        "clientId": {
+                            "description": "A client ID that (hopefully) uniquely identifies the client implementation\nof the Safe Browsing API.",
+                            "type": "string"
+                        },
+                        "clientVersion": {
+                            "description": "The version of the client implementation.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "listUpdateRequests": {
+                    "description": "The requested threat list updates.",
+                    "items": {
+                        "description": "A single list update request.",
+                        "properties": {
+                            "constraints": {
+                                "description": "The constraints associated with this request.",
+                                "properties": {
+                                    "deviceLocation": {
+                                        "description": "A client's physical location, expressed as a ISO 31166-1 alpha-2\nregion code.",
+                                        "type": "string"
+                                    },
+                                    "language": {
+                                        "description": "Requests the lists for a specific language. Expects ISO 639 alpha-2\nformat.",
+                                        "type": "string"
+                                    },
+                                    "maxDatabaseEntries": {
+                                        "description": "Sets the maximum number of entries that the client is willing to have\nin the local database. This should be a power of 2 between 2**10 and\n2**20. If zero, no database size limit is set.",
+                                        "format": "int32",
+                                        "type": "integer"
+                                    },
+                                    "maxUpdateEntries": {
+                                        "description": "The maximum size in number of entries. The update will not contain more\nentries than this value.  This should be a power of 2 between 2**10 and\n2**20.  If zero, no update size limit is set.",
+                                        "format": "int32",
+                                        "type": "integer"
+                                    },
+                                    "region": {
+                                        "description": "Requests the list for a specific geographic location. If not set the\nserver may pick that value based on the user's IP address. Expects ISO\n3166-1 alpha-2 format.",
+                                        "type": "string"
+                                    },
+                                    "supportedCompressions": {
+                                        "description": "The compression types supported by the client.",
+                                        "items": {
+                                            "enum": [
+                                                "COMPRESSION_TYPE_UNSPECIFIED",
+                                                "RAW",
+                                                "RICE"
+                                            ],
+                                            "type": "string"
+                                        },
+                                        "type": "array"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "platformType": {
+                                "description": "The type of platform at risk by entries present in the list.",
+                                "enum": [
+                                    "PLATFORM_TYPE_UNSPECIFIED",
+                                    "WINDOWS",
+                                    "LINUX",
+                                    "ANDROID",
+                                    "OSX",
+                                    "IOS",
+                                    "ANY_PLATFORM",
+                                    "ALL_PLATFORMS",
+                                    "CHROME"
+                                ],
+                                "type": "string"
+                            },
+                            "state": {
+                                "description": "The current state of the client for the requested list (the encrypted\nclient state that was received from the last successful list update).",
+                                "format": "byte",
+                                "type": "string"
+                            },
+                            "threatEntryType": {
+                                "description": "The types of entries present in the list.",
+                                "enum": [
+                                    "THREAT_ENTRY_TYPE_UNSPECIFIED",
+                                    "URL",
+                                    "EXECUTABLE",
+                                    "IP_RANGE",
+                                    "CHROME_EXTENSION",
+                                    "FILENAME",
+                                    "CERT"
+                                ],
+                                "type": "string"
+                            },
+                            "threatType": {
+                                "description": "The type of threat posed by entries present in the list.",
+                                "enum": [
+                                    "THREAT_TYPE_UNSPECIFIED",
+                                    "MALWARE",
+                                    "SOCIAL_ENGINEERING",
+                                    "UNWANTED_SOFTWARE",
+                                    "POTENTIALLY_HARMFUL_APPLICATION",
+                                    "SOCIAL_ENGINEERING_INTERNAL",
+                                    "API_ABUSE",
+                                    "MALICIOUS_BINARY",
+                                    "CSD_WHITELIST",
+                                    "CSD_DOWNLOAD_WHITELIST",
+                                    "CLIENT_INCIDENT",
+                                    "CLIENT_INCIDENT_WHITELIST",
+                                    "APK_MALWARE_OFFLINE",
+                                    "SUBRESOURCE_FILTER",
+                                    "SUSPICIOUS",
+                                    "TRICK_TO_BILL"
+                                ],
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "__xgafv": {
+            "type": "string",
+            "enum": [
+                "1",
+                "2"
+            ]
+        }
+    }
+}
